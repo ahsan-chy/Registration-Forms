@@ -1,8 +1,25 @@
 import React from 'react'
 import { useState } from "react";
 
+const Input = (props) => {
+  let {name,type, value, label, onChange} = props;
+  return(
+    <>
+        <label htmlFor={name}>{label}</label> <br/>
+          <input 
+            type={type}   
+            id={name} 
+            name={name}
+            value={value} 
+            onChange={onChange}
+            required
+            className="form-control mb-3"
+          />
+    </>
+  )
+}
 
-function Registration_Form() {
+function Nexxussbarry_Form() {
   // let [name, setName]= useState("");
   // let [email, setEmail] = useState("");
   // let [cnic, setCNIC]= useState("");
@@ -57,19 +74,29 @@ function Registration_Form() {
 //   setUser({...user, phone:event.target.value})
 // }
 
-let displayuser = (event) =>{
-  if(event.target.name === 'name' )
-  setUser({...user, name:event.target.value})
+//------- Method 2 ------//
+// let displayuser = (event) =>{
+//   if(event.target.name === 'name' )
+//   setUser({...user, name:event.target.value})
   
-  else if(event.target.name === 'email' )
-  setUser({...user, email:event.target.value})
+//   else if(event.target.name === 'email' )
+//   setUser({...user, email:event.target.value})
   
-  else if(event.target.name === 'cnic' )
-  setUser({...user, cnic:event.target.value})
+//   else if(event.target.name === 'cnic' )
+//   setUser({...user, cnic:event.target.value})
   
-  else if(event.target.name === 'phone' )
-  setUser({...user, phone:event.target.value})
+//   else if(event.target.name === 'phone' )
+//   setUser({...user, phone:event.target.value})
+// }
+// ---------- Method 3 (explained) ------- //
+// let displayuser = (event) => {
+//   setUser({...user, [event.target.name]: event.target.value})
+// }
+// ---------- Method 3 ------- //
+let displayuser =({target: {name, value}}) => {
+  setUser({...user, [name]: value})
 }
+
 
   return (
     <div className="container mt-5 mb-5">
@@ -80,43 +107,76 @@ let displayuser = (event) =>{
         
         <h3 className="text-center text-success">Registration Form</h3>
 
-          <label htmlFor="floatname">Name</label>
-          <input type="text" 
+         {/* <label htmlFor="floatname">Name</label>
+           <input type="text" 
             className="form-control mb-3" 
             id="floatname" 
+            name="name"
+            value={user.name} 
+            onChange={displayuser}
+          /> */}
+          <Input 
+            type="text"  
+            label="Full Name"
+            id="Patientname" 
             name="name"
             value={user.name} 
             onChange={displayuser}
           />
 
 
-          <label htmlFor="floatemail">Email</label>
+          {/* <label htmlFor="floatemail">Email</label>
           <input type="email" 
             className="form-control mb-3" 
             id="floatemail" 
             name="email"
             value={user.email} 
             onChange={displayuser}
+          /> */}
+          <Input 
+            type="email"  
+            label="Email"
+            id="Patientemail" 
+            name="email"
+            value={user.email} 
+            onChange={displayuser}
+            
           />
  
-          <label htmlFor="floatcnic">C-N-I-C</label>
+          {/* <label htmlFor="floatcnic">C-N-I-C</label>
           <input type="number" 
             className="form-control mb-3"  
             id="floatcnic" 
             name="cnic"
             value={user.cnic} 
             onChange={displayuser}
+          /> */}
+          <Input 
+            type="number"  
+            label="CNIC"
+            id="Patientcnic" 
+            name="cnic"
+            value={user.cnic} 
+            onChange={displayuser}
           />
 
-          <label htmlFor="floatno">Phone No</label>
+          {/* <label htmlFor="floatno">Phone No</label>
           <input type="tel" 
             className="form-control mb-4"  
             id="floatno" 
             name='phone'
             value={user.phone} 
             onChange={displayuser}
+          /> */}
+          <Input 
+            type="tel"  
+            label="Phone No"
+            id="Patientphone" 
+            name="phone"
+            value={user.phone} 
+            onChange={displayuser}
           />
-          
+
         <div className="row mt-5">
             <button type="submit" className="btn btn-success btn-block">Submit</button>
         </div>
@@ -141,4 +201,4 @@ let displayuser = (event) =>{
   )
 }
 
-export default Registration_Form
+export default Nexxussbarry_Form

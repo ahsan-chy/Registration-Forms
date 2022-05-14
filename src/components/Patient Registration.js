@@ -16,17 +16,17 @@ function Registration() {
     }
   };
   let displayemail = (event) => {
-    if (event.target.name === "name") {
+    if (event.target.name === "email") {
       setUser({ ...user, email: event.target.value });
     }
   };
   let displaycnic = (event) => {
-    if (event.target.name === "name") {
+    if (event.target.name === "cnic") {
       setUser({ ...user, cnic: event.target.value });
     }
   };
   let displayphone = (event) => {
-    if (event.target.name === "name") {
+    if (event.target.name === "phone") {
       setUser({ ...user, phone: event.target.value });
     }
   };
@@ -43,17 +43,7 @@ function Registration() {
       <div className="row">
         
           <div className="row">
-            <div className="col-6">
-              {user.name && user.email && user.cnic && user.phone && user.gender  && (
-                <h4>
-                  Mr. <span className=" text-success"> {user.name} </span>{" "}  <br />
-                  Email: <span className=" text-success"> {user.email} </span>{" "} <br />
-                  CNIC: <span className=" text-success">{user.cnic}</span>{" "} <br />
-                  Phone: <span className=" text-success"> {user.phone} </span>{" "} <br />
-                  Gender: <span className=" text-success"> {user.gender === '' ? alert("Please set gender") : user.gender} </span>{" "} <br />
-                </h4>
-              )}
-            </div>
+            
 
             <div className="col-6">
             <form onSubmit={displaypatient}>
@@ -70,39 +60,38 @@ function Registration() {
                 required
               />
 
-              <label htmlFor="floatname">Email</label>
-              <input
-                type="text"
+              <label htmlFor="floatemail">Email</label>
+              <input type="email"
                 className="form-control mb-3"
-                id="floatname"
-                name="name"
+                id="floatemail" 
+                name="email"
                 value={user.email}
                 onChange={displayemail}
                 required
               />
 
-              <label htmlFor="floatname">C-N-I-C</label>
+              <label htmlFor="floatcnic">C-N-I-C</label>
               <input
-                type="text"
+                type="number"
                 className="form-control mb-3"
-                id="floatname"
-                name="name"
+                id="floatcnic" 
+                name="cnic"
                 value={user.cnic}
                 onChange={displaycnic}
                 required
               />
 
-              <label htmlFor="floatname">Phone No</label>
+              <label htmlFor="floatno">Phone No</label>
               <input
-                type="text"
+                type="tel"
                 className="form-control mb-3"
-                id="floatname"
-                name="name"
+                id="floatno" 
+                name='phone'
                 value={user.phone}
                 onChange={displayphone}
                 required
               />
-              <label htmlFor="floatname">Gender</label>
+              <label>Gender</label>
               <select
                 className="form-select  mb-4"
                 aria-label="Default select example"
@@ -118,6 +107,17 @@ function Registration() {
                 <button type="submit" className="btn btn-success btn-block">{" "} Register {" "}</button>
               </div>
               </form>
+            </div>
+            <div className="col-6">
+              {user.name && user.email && user.cnic && user.phone && user.gender  && (
+                <h4>
+                  Mr. <span className=" text-success"> {user.name} </span>{" "}  <br />
+                  Email: <span className=" text-success"> {user.email} </span>{" "} <br />
+                  CNIC: <span className=" text-success">{user.cnic}</span>{" "} <br />
+                  Phone: <span className=" text-success"> {user.phone} </span>{" "} <br />
+                  Gender: <span className=" text-success"> {user.gender === '' ? alert("Please set gender") : user.gender} </span>{" "} <br />
+                </h4>
+              )}
             </div>
           </div>
         
